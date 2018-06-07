@@ -39,7 +39,7 @@ BOOST_AUTO_TEST_CASE(vector_test){
 	"0.0.0.1\n"
 	"0.0.0.1\n");
 	check(print_ip(
-	std::vector<short> v{1,2,3,4,0}),
+	std::vector<short>{1,2,3,4,0}),
 	"0.1\n"
 	"0.2\n"
 	"0.3\n"
