@@ -2,6 +2,7 @@ language: cpp
 
 before_script:
 - sudo apt-get install -y -qq graphviz doxygen libboost-test1.54-dev
+script:
 - cmake -DBUILD_TESTING=ON -DCMAKE_BUILD_TYPE=Release .
 - cmake --build .
 - cmake --build . --target test
