@@ -1,0 +1,16 @@
+dist: trusty
+sudo: required
+language: cpp
+compiler: clang
+
+before_script:
+- sudo apt-get install libboost-test1.54-dev
+- cmake .
+- cmake --build .
+- cmake --build . --target test
+- cmake --build . --target package
+deploy:
+- provider: script
+  skip_cleanup: true
+  script:
+  - curl -T print_ip-1.1.$TRAVIS_BUILD_NUMBER-Linux.deb -ucezarnik:$BINTRAY_API_KEY "https://api.bintray.com/content/cezarnik/homework/print_ip/$TRAVIS_BUILD_NUMBER/print_ip-1.1.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
