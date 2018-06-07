@@ -19,8 +19,8 @@ void print_ip(const std::string &s){
 	std::cout<<s<<std::endl;
 }
 template<typename T>
-typename std::enable_if<std::is_same<std::vector<typename T:: value_type>,T>::value || std::is_same<std::list<typename T :: value_type>,T>::value,void> 
-print_ip(T container){
+typename std::enable_if<std::is_same<std::vector<typename T:: value_type>,T>::value || std::is_same<std::list<typename T :: value_type>,T>::value,void>::type
+print_ip(const T& container){
 	for(const auto& it: container)
 		print_ip (it);
 }

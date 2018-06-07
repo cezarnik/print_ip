@@ -13,7 +13,7 @@ std::string get_output(const std::function<void()>& f){
 	std::cout.rdbuf(backup_buf);
 	return str.str();
 }
-# define check(func, result) BOOST_CHECK_EQUAL(get_output([](){f;}),result)
+# define check(func, result) BOOST_CHECK_EQUAL(get_output([](){func;}),result)
 BOOST_AUTO_TEST_CASE(char_test){
 	check(print_ip(static_cast<char>(1)),"1\n");
 	check(print_ip(static_cast<char>(-1)),"255\n");
