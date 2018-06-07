@@ -1,6 +1,6 @@
 #define BOOST_TEST_MODULE print_ip_test
 #include <boost/test/unit_test.hpp>
-
+#include <functional>
 #include "print_ip.h"
 #include <sstream>
 #include <string>
@@ -38,8 +38,8 @@ BOOST_AUTO_TEST_CASE(vector_test){
 	"0.0.0.1\n"
 	"0.0.0.1\n"
 	"0.0.0.1\n");
-	std::vector<short> v={1,2,3,4,0};
-	check(print_ip(v),
+	check(print_ip(
+	std::vector<short> v{1,2,3,4,0}),
 	"0.1\n"
 	"0.2\n"
 	"0.3\n"
@@ -47,9 +47,8 @@ BOOST_AUTO_TEST_CASE(vector_test){
 	"0.0\n");
 }
 BOOST_AUTO_TEST_CASE(list_test){
-	int a[5]={256,5,1,2,1};
-	std::list<int> l(a,a+5);
-	check(print_ip(l),
+	check(print_ip(
+	std::list<int>{256,5,1,2,1}),
 	"0.0.1.0\n"
 	"0.0.0.5\n"
 	"0.0.0.1\n"
